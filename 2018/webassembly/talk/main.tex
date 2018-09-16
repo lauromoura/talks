@@ -1,0 +1,66 @@
+% -*- mode: LaTeX; mode: TeX-PDF; TeX-engine: xetex; coding: utf-8-unix; TeX-master: t; ispell-local-dictionary: "english"; -*-
+
+\documentclass[12pt,mathserif]{beamer}
+\usepackage[english]{babel}
+\usepackage{fontspec}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{listings-golang}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{changepage}
+\usepackage{pgf-umlsd}
+\usepackage{longtable,booktabs}
+% \usepackage[backend=biber]{biblatex}
+% \addbibresource{biblio.bib}
+
+\usepackage{caption}
+\DeclareCaptionLabelFormat{nolabel}{}
+\captionsetup{labelformat=nolabel}
+
+\usetikzlibrary{shapes.geometric,%
+                arrows,%
+                petri,%
+                topaths,%
+                calc,%
+                positioning}%
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm, minimum height=0.5cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=1cm, minimum height=0.5cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=1cm, minimum height=0.5cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usetheme{expertise}
+\setbeamercovered{transparent}
+
+% \tightlist is defined in pandoc's theme, which we don't use.
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\author{Lauro Moura Maranhão Neto}
+\title{Web Assembly \\ Uma introdução} % Use two lines to align the company logo...
+\institute{Expertise Solutions}
+
+\AtBeginSection{\frame{\sectionpage}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Visão geral}
+\tableofcontents
+\end{frame}
+
+\input{"talk.tex"}
+
+\end{document}
+
