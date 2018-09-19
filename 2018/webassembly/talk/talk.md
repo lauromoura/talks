@@ -36,8 +36,13 @@
     - Transpilers e afins
 \note{Mas ainda assim estamos presos ao JS}
 - TOO MUCH JS
+    - node_modules e afins
 - Alto nível demais
 \note{Vira um problema ao usar JS como assembly}
+
+## Problemas
+
+![](js_cost.jpeg){ width=100% }
 
 ## Problemas
 
@@ -61,13 +66,62 @@ o=n.slice,a=n.concat,s=n.push,u=n.indexOf,l={},
 - Otimizar (JIT e afins)
 - Rodar
 
-# asm.js
+# "Assembly" da Web
 
-# WebAssembly Text Format
+## asm.js
+
+- Subset de Javascript
+- Dicas para o interpretador do código que vai rodar
+- Reduz o overhead de parsear e compilar
+
+## asm.js - C
+
+```c
+size_t strlen(char *ptr) {
+  char *curr = ptr;
+  while (*curr != 0) {
+    curr++;
+  }
+  return (curr - ptr);
+}
+```
+
+## asm.js - js
+
+
+```javascript
+function strlen(ptr) {
+  ptr = ptr|0;
+  var curr = 0;
+  curr = ptr;
+  while (MEM8[curr]|0 != 0) {
+    curr = (curr + 1)|0;
+  }
+  return (curr - ptr)|0;
+}
+```
+
+## asm.js
+
+- Ainda é javascript
+- Pode ser melhorado
+
+# WebAssembly
+
+## WebAssembly
+
+- Formato binário
+    - Mais rápido para parsear
+- VM em pilha
+- Suporte a uma versão MVP nos 4 principais navegadores
+
+## WebAssembly Text Format
 
 ```wast
 (module
-        (func $addTwo (param $lhs i32) (param $rhs i32) (result i32)
+        (func $addTwo (param $lhs i32)
+                      (param $rhs i32)
+                      (result i32)
                 get_local $lhs
                 get_local $rhs
                 i32.add)
@@ -75,12 +129,10 @@ o=n.slice,a=n.concat,s=n.push,u=n.indexOf,l={},
 )
 ```
 
-# WebAssembly
-
-# Processador hipotético
+## Processador hipotético
 
 - 8-bit bytes
-- Granularidade de memória byte a byte
+- Memória byte a byte
 - Suporte a acessos não-alinhados
 - Inteiros de 32bits e opcionalmente 64bits
 - IEEE 754-2008 para floats de 32 e 64bits
@@ -88,12 +140,28 @@ o=n.slice,a=n.concat,s=n.push,u=n.indexOf,l={},
 - Little endian
 - Ponteiros de 32bits
     - wasm64 suporta ponteiros de 64bits
-- Operações atômicas sem lock para acessos alinhados de 8, 16 e 32 bits
 
-# Syscalls
+## Syscalls
 
 - Não existem
 - Opcionalmente, importar funções a partir do Host
+
+
+
+# emscripten
+
+## emscripten
+
+- Backend LLVM
+- Gera código asm.js ou webassembly
+- Usos
+    - Unity
+    - Qt
+    - DOSBox
+
+## emscripten
+
+- 
 
 # Demos
 
