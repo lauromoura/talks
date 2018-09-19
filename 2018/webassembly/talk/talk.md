@@ -144,8 +144,7 @@ function strlen(ptr) {
 ## Syscalls
 
 - Não existem
-- Opcionalmente, importar funções a partir do Host
-
+- Opcionalmente, importar funções a partir do host
 
 
 # emscripten
@@ -153,30 +152,44 @@ function strlen(ptr) {
 ## emscripten
 
 - Backend LLVM
-- Gera código asm.js ou webassembly
+- clang como frontend
+- Gera código asm.js ou WebAssembly
 - Usos
     - Unity
     - Qt
     - DOSBox
 
-## emscripten
+## emscripten runtime environment
 
-- 
+- SDL 2.0
+- OpenGL ES 2.0
+- Sistema de arquivos virtual
+- Arquivos
+    - MEMFS
+    - IDBFS
+    - NODEFS (node.js)
+- Main loop function
+- Linkagem estática
+    - Módulos JS dinamicamente
 
 # Demos
 
 # Hoje
 
 - C/C++/Rust
-- 
+- MVP nos principais navegadores.
 
 # Futuro
+
+- Threads
+- C#/.Net (ilasm)
 
 ## Referências
 
 - https://webassembly.org
 - WebAssembly and the Death of Javascript
     - https://www.youtube.com/watch?v=pBYqen3B2gc 
+- https://kripken.github.io/emscripten-site/index.html
 - https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4
 
 # Perguntas
