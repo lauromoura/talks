@@ -34,15 +34,12 @@
 
 - Ficar preso a uma única linguagem
     - Transpilers e afins
+    - Ainda assim, é Javascript
 \note{Mas ainda assim estamos presos ao JS}
 - TOO MUCH JS
     - node_modules e afins
 - Alto nível demais
-\note{Vira um problema ao usar JS como assembly}
-
-## Problemas
-
-![](js_cost.jpeg){ width=100% }
+    - Problema ao usar JS normal como "assembly"
 
 ## Problemas
 
@@ -61,18 +58,20 @@ o=n.slice,a=n.concat,s=n.push,u=n.indexOf,l={},
 
 ## Porque é tão pesado?
 
-- Parsear
-- Gerar bytecode
-- Otimizar (JIT e afins)
-- Rodar
+- Javascript
+    - Parsear
+    - Gerar bytecode
+    - Otimizar (JIT e afins)
+    - Re-Otimizar
+    - Rodar
 
 # "Assembly" da Web
 
 ## asm.js
 
 - Subset de Javascript
-- Dicas para o interpretador do código que vai rodar
-- Reduz o overhead de parsear e compilar
+- Dicas para o interpretador do código que vai ser executado
+- Permite otimizações mais certeiras e eficientes
 
 ## asm.js - C
 
@@ -104,6 +103,7 @@ function strlen(ptr) {
 ## asm.js
 
 - Ainda é javascript
+- Ainda precisa ser parseado
 - Pode ser melhorado
 
 # WebAssembly
@@ -111,7 +111,8 @@ function strlen(ptr) {
 ## WebAssembly
 
 - Formato binário
-    - Mais rápido para parsear
+    - Mais compacto
+    - Não precisa ser parseado, apenas decodado
 - VM em pilha
 - Suporte a uma versão MVP nos 4 principais navegadores
 
@@ -191,5 +192,6 @@ function strlen(ptr) {
     - https://www.youtube.com/watch?v=pBYqen3B2gc 
 - https://kripken.github.io/emscripten-site/index.html
 - https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4
+- https://hacks.mozilla.org/2017/03/why-webassembly-is-faster-than-asm-js/
 
 # Perguntas
