@@ -113,8 +113,10 @@ function strlen(ptr) {
 - Formato binário
     - Mais compacto
     - Não precisa ser parseado, apenas decodado
+- Tipos já determinados
 - VM em pilha
 - Suporte a uma versão MVP nos 4 principais navegadores
+- Gerenciamento manual de memória
 
 ## WebAssembly Text Format
 
@@ -142,10 +144,10 @@ function strlen(ptr) {
 - Ponteiros de 32bits
     - wasm64 suporta ponteiros de 64bits
 
-## Syscalls
+## Syscalls e afins
 
 - Não existem
-- Opcionalmente, importar funções a partir do host
+- Host expõe uma API
 
 
 # emscripten
@@ -169,9 +171,19 @@ function strlen(ptr) {
     - MEMFS
     - IDBFS
     - NODEFS (node.js)
-- Main loop function
+
+## emscripten - main loop
+
+- Não pode bloquear
+- Função de iteração
+- emscripten_set_main_loop
+- emscripten_cancel_main_loop
+
+## emscripten - linkagem
+
 - Linkagem estática
-    - Módulos JS dinamicamente
+- Como garantir de onde as libs vem?
+- Módulos JS dinamicamente
 
 # Demos
 
@@ -179,11 +191,14 @@ function strlen(ptr) {
 
 - C/C++/Rust
 - MVP nos principais navegadores.
+- Sem GC "nativo"
+    - GC compilado para webasm
 
 # Futuro
 
 - Threads
 - C#/.Net (ilasm)
+- 
 
 ## Referências
 
