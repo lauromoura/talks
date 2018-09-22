@@ -11,7 +11,7 @@ view: main.pdf
 	evince main.pdf
 
 talk.tex: talk.md
-	pandoc talk.md --slide-level 2 -t beamer -o talk.tex --listings
+	pandoc talk.md --var urlcolor=cyan --slide-level 2 -t beamer -o talk.tex --listings
 	# pandoc talk.md --slide-level 2 -t beamer+pandoc_title_block --template=main.tex --standalone -o talk.tex --listings
 
 slides.pdf: main.tex talk.tex
