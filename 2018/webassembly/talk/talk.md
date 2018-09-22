@@ -15,10 +15,10 @@
 
 ## Javascript
 
-- Hack de 10 dias em 1995
+- [Hack de 10 dias em 1995](http://speakingjs.com/es5/ch04.html)
 - Que virou um dos pilares da web
-\note{Agilidade: Por exemplo, tempo de compilação}
-- Alto nível, prototypes, sintaxe que lembra C/Java
+\note{Junto com HTML e CSS}
+- Alto nível, prototypes, sintaxe que lembra Java
 - Principais implementações
     - V8 - Blink (Chrome) e Node
     - JavascriptCore - Webkit (Safari)
@@ -33,13 +33,12 @@
 ## Problemas
 
 - Ficar preso a uma única linguagem
-    - Transpilers e afins
+    - [Transpilers e afins](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js)
     - Ainda assim, é Javascript
-\note{Mas ainda assim estamos presos ao JS}
-- TOO MUCH JS
+- [TOO MUCH JS](https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4)
     - node_modules e afins
-- Alto nível demais
-    - Problema ao usar JS normal como "assembly"
+- Problema ao usar JS normal como "assembly"
+    - Alto nível demais
 
 ## Problemas
 
@@ -58,7 +57,7 @@ o=n.slice,a=n.concat,s=n.push,u=n.indexOf,l={},
 
 ## Porque é tão pesado?
 
-- Javascript
+- [Javascript](https://blog.sessionstack.com/how-javascript-works-a-comparison-with-webassembly-why-in-certain-cases-its-better-to-use-it-d80945172d79)
     - Parsear
     - Gerar bytecode
     - Otimizar (JIT e afins)
@@ -69,7 +68,7 @@ o=n.slice,a=n.concat,s=n.push,u=n.indexOf,l={},
 
 ## asm.js
 
-- Subset de Javascript
+- [Subset de Javascript](http://asmjs.org/faq.html)
 - Dicas para o interpretador do código que vai ser executado
 - Permite otimizações mais certeiras e eficientes
 
@@ -164,41 +163,62 @@ function strlen(ptr) {
 
 ## emscripten runtime environment
 
-- SDL 2.0
-- OpenGL ES 2.0
-- Sistema de arquivos virtual
-- Arquivos
+- [Ports](https://github.com/emscripten-ports)
+    - [SDL 2.0](https://github.com/emscripten-ports/SDL2)
+    - ...
+- [OpenGL ES 2.0](https://kripken.github.io/emscripten-site/docs/porting/multimedia_and_graphics/OpenGL-support.html)
+- [Sistema de arquivos virtual](https://kripken.github.io/emscripten-site/docs/porting/files/file_systems_overview.html#file-system-overview)
     - MEMFS
     - IDBFS
     - NODEFS (node.js)
+- Memória
+    - Typed Array único
+    - Várias views (int, float, etc)
+- pthreads
+    - asm.js
+    - Experimental em WebAssembly
 
 ## emscripten - main loop
 
 - Não pode bloquear
 - Função de iteração
-- emscripten_set_main_loop
-- emscripten_cancel_main_loop
+- [emscripten_set_main_loop](https://kripken.github.io/emscripten-site/docs/api_reference/emscripten.h.html#c.emscripten_set_main_loop_arg)
+- [emscripten_cancel_main_loop](https://kripken.github.io/emscripten-site/docs/api_reference/emscripten.h.html#c.emscripten_cancel_main_loop)
 
-## emscripten - linkagem
+## emscripten - linkagem e memória
 
-- Linkagem estática
-- Como garantir de onde as libs vem?
+- [Linkagem estática](https://github.com/kripken/emscripten/wiki/Linking)
+    - Como garantir de onde as libs vem?
 - Módulos JS dinamicamente
+- [Problemas com acessos desalinhados](https://kripken.github.io/emscripten-site/docs/porting/Debugging.html#memory-alignment-issues)
+    - SAFE_HEAP para diagnóstico
 
 # Demos
 
 # Hoje
 
+## Hoje
+
 - C/C++/Rust
-- MVP nos principais navegadores.
-- Sem GC "nativo"
-    - GC compilado para webasm
+- [MVP nos principais navegadores.](https://webassembly.org/docs/mvp/)
+    - Módulo
+    - Instruções
+    - Formato binário
+    - Formato textual
+    - Implementações nos browsers e outros ambientes
 
 # Futuro
 
-- Threads
-- C#/.Net (ilasm)
-- 
+## Roadmap
+
+- [Roadmap](https://webassembly.org/roadmap/)
+    - Threads
+    - GC
+    - Host bindings (DOM/JS)
+    - Ferramentas
+    - Multi processos (fork & cia)
+    - Mais controle de memória
+    - ABI
 
 ## Referências
 
