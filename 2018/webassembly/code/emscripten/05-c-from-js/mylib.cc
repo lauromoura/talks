@@ -15,11 +15,11 @@ int factorial(int x) {
 
 
 EMSCRIPTEN_KEEPALIVE
-const char *allcaps(char *s) {
+char *allcaps(char *s) {
     std::string str(s);
     for (auto& c : str)
         c = toupper(c);
-    return str.c_str();
+    return strdup(str.c_str());
 }
 
 }
