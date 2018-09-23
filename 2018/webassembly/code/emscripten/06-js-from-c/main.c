@@ -5,7 +5,7 @@
 
 int main() {
     EM_ASM(
-            console.log("hello from console!");
+            console.log(Array(10).join("lol" - 2) + "  Batman!");
     );
     return 0;
 }
