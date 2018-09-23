@@ -22,6 +22,14 @@ static inline bool key_up(SDL_Event e, SDL_Keycode key)
     return e.type == SDL_KEYUP && e.key.keysym.sym == key;
 }
 
+void cleanup(context ctx)
+{
+    SDL_DestroyTexture(ctx.image);
+    SDL_DestroyRenderer(ctx.renderer);
+    SDL_DestroyWindow(ctx.screen);
+    SDL_Quit();
+}
+
 void loop_fn(void *data)
 {
     context *c = (context*)data;
@@ -34,6 +42,7 @@ void loop_fn(void *data)
             c->running = false;
 #ifdef __EMSCRIPTEN__
             emscripten_cancel_main_loop();
+            cleanup(*c);
 #endif
             return;
         }
@@ -110,10 +119,7 @@ int main() {
         SDL_Delay(1000/60);
     }
 
-    SDL_DestroyTexture(ctx.image);
-    SDL_DestroyRenderer(ctx.renderer);
-    SDL_DestroyWindow(ctx.screen);
-    SDL_Quit();
+    cleanup(ctx);
 
 #endif
     return 0;

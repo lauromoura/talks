@@ -6,4 +6,4 @@ hello-native: hello-sdl.cpp
 	cc $^ -o $@ `pkg-config --cflags --libs SDL2_image sdl2`
 
 clean:
-	rm *.js *.wasm *.html *.data
+	rm *.js *.wasm *.html *.data hello-native
