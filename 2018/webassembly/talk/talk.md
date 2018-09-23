@@ -32,13 +32,13 @@
 
 ## Problemas
 
+- Array(16).join("LoL" - 2) + " Batman!"
 - Ficar preso a uma única linguagem
     - [Transpilers e afins](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js)
     - Ainda assim, é Javascript
 - [TOO MUCH JS](https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4)
-    - node_modules e afins
-- Problema ao usar JS normal como "assembly"
-    - Alto nível demais
+- Alto nível demais
+    - Problema ao usar JS normal como "assembly"
 
 ## Problemas
 
@@ -58,7 +58,7 @@ o=n.slice,a=n.concat,s=n.push,u=n.indexOf,l={},
 ## Porque é tão pesado?
 
 - [Javascript](https://blog.sessionstack.com/how-javascript-works-a-comparison-with-webassembly-why-in-certain-cases-its-better-to-use-it-d80945172d79)
-    - Parsear
+    - [Parsear](http://www.mattzeunert.com/2017/01/30/lazy-javascript-parsing-in-v8.html)
     - Gerar bytecode
     - Otimizar (JIT e afins)
     - Re-Otimizar
@@ -110,7 +110,6 @@ function strlen(ptr) {
 ## WebAssembly
 
 - Formato binário
-    - Mais compacto
     - Não precisa ser parseado, apenas decodado
 - Tipos já determinados
 - VM em pilha
@@ -135,6 +134,7 @@ function strlen(ptr) {
 
 - 8-bit bytes
 - Memória byte a byte
+    - [Linear](https://webassembly.github.io/spec/core/syntax/modules.html#syntax-mem)
 - Suporte a acessos não-alinhados
 - Inteiros de 32bits e opcionalmente 64bits
 - IEEE 754-2008 para floats de 32 e 64bits
@@ -146,8 +146,8 @@ function strlen(ptr) {
 ## Syscalls e afins
 
 - Não existem
+    - [ABI em discussão](https://github.com/WebAssembly/tool-conventions/issues/27)
 - Host expõe uma API
-
 
 # emscripten
 
@@ -161,6 +161,10 @@ function strlen(ptr) {
     - Qt
     - DOSBox
 
+## emscripten
+
+![](EmscriptenToolchain.png){ width=100% }
+
 ## emscripten runtime environment
 
 - [Ports](https://github.com/emscripten-ports)
@@ -171,10 +175,10 @@ function strlen(ptr) {
     - MEMFS
     - IDBFS
     - NODEFS (node.js)
-- Memória
+- [Memória](https://kripken.github.io/emscripten-site/docs/porting/emscripten-runtime-environment.html#emscripten-memory-representation)
     - Typed Array único
     - Várias views (int, float, etc)
-- pthreads
+- [pthreads](https://kripken.github.io/emscripten-site/docs/porting/pthreads.html)
     - asm.js
     - Experimental em WebAssembly
 
@@ -189,44 +193,52 @@ function strlen(ptr) {
 
 - [Linkagem estática](https://github.com/kripken/emscripten/wiki/Linking)
     - Como garantir de onde as libs vem?
-- Módulos JS dinamicamente
+    - Módulos JS dinamicamente
 - [Problemas com acessos desalinhados](https://kripken.github.io/emscripten-site/docs/porting/Debugging.html#memory-alignment-issues)
     - SAFE_HEAP para diagnóstico
 
 # Demos
 
-# Hoje
+# Hoje e Amanhã
 
 ## Hoje
 
-- C/C++/Rust
+- C/C++
+- [Rust](https://rustwasm.github.io/book/)
 - [MVP nos principais navegadores.](https://webassembly.org/docs/mvp/)
-    - Módulo
+    - Módulo exportado
     - Instruções
     - Formato binário
     - Formato textual
     - Implementações nos browsers e outros ambientes
 
-# Futuro
-
-## Roadmap
+## Amanhã (e depois de amanhã)
 
 - [Roadmap](https://webassembly.org/roadmap/)
+    - Especificação
     - Threads
     - GC
+    - Exceções
     - Host bindings (DOM/JS)
     - Ferramentas
     - Multi processos (fork & cia)
     - Mais controle de memória
     - ABI
+    - [Segurança](https://www.fastly.com/blog/hijacking-control-flow-webassembly)
 
-## Referências
+# Referências
 
-- https://webassembly.org
+## Links úteis
+
+- Projeto
+    - https://webassembly.org
+- MUITOS links de projetos, ferramentas, etc
+    - https://github.com/mbasso/awesome-wasm
 - WebAssembly and the Death of Javascript
     - https://www.youtube.com/watch?v=pBYqen3B2gc 
-- https://kripken.github.io/emscripten-site/index.html
-- https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4
-- https://hacks.mozilla.org/2017/03/why-webassembly-is-faster-than-asm-js/
+- Emscripten
+    - https://kripken.github.io/emscripten-site/index.html
+- Blog da Mozilla
+    - https://hacks.mozilla.org/category/webassembly/
 
 # Perguntas
