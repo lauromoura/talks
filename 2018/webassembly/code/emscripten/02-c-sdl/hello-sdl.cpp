@@ -1,12 +1,20 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
 
+#include <algorithm>
+#include <string>
+#include <iostream>
+
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #endif
 
 extern "C" int main() {
-    printf("Starting SDL demo!\n");
+
+    // STL Too!
+    std::string str("Starting SDL demo");
+    std::transform(str.begin(), str.end(), str.begin(), &toupper);
+    std::cout << str << std::endl;
 
     SDL_Init(SDL_INIT_VIDEO);
     SDL_Surface *screen = SDL_SetVideoMode(256, 256, 32, SDL_SWSURFACE);

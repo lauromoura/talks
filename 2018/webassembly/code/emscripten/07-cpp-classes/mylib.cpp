@@ -1,10 +1,13 @@
 #include <emscripten/bind.h>
 
+#include <stdio.h>
 #include <cmath>
 
 class Vector {
 public:
     Vector(int x, int y) : x(x), y(y) {}
+
+    ~Vector() { printf("Good bye, world!\n"); }
 
     double length() const {
         return sqrt(x*x + y*y);
