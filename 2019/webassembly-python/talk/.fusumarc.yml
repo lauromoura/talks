@@ -1,0 +1,24 @@
+meta:
+  url:
+  name: WebAssembly - E o que Python tem a ver com isso
+  author: Lauro Moura Maranhão Neto
+  thumbnail:
+  description: https://github.com/lauromoura/talks
+  sns:
+    - twitter
+slide:
+  loop: true
+  sidebar: true
+  targetBlank: true
+  showIndex: false
+  isVertical: false
+  code:
+    languages:
+      - python
+      - c
+      - wasm
+    plugins: []
+    theme: default
+extends:
+  js:
+  css:
