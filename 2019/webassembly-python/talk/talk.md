@@ -245,7 +245,7 @@ function strlen(ptr) {
     - https://kripken.github.io/emscripten-site/index.html
 - Blog da Mozilla
     - https://hacks.mozilla.org/category/webassembly/
-- PyIodide
+- Pyodide
     - https://github.com/iodide-project/pyodide
 
 # Perguntas
