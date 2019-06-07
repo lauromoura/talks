@@ -7,13 +7,17 @@ E o que Python tem a ver com isso
 ## Quem sou
 
 - Desenvolvedor de software desde 2008
-- `[Recife].append('Florianópolis')`
+- `['Recife'].append('Florianópolis')`
 - 2008~15 Instituto Nokia de Tecnologia
 - 2015~ Expertise Solutions
 - Projetos:
     - PySide
     - Webkit
     - EFL (JS, C#)
+- Contato:
+    - Twitter: lauromoura
+    - Github: lauromoura
+    - email: lauromoura at gmail.com
 
 ---
 
@@ -21,10 +25,10 @@ E o que Python tem a ver com isso
 
 - [Hack de 10 dias em 1995](http://speakingjs.com/es5/ch04.html)
 - Que virou um dos pilares da web
-\note{Junto com HTML e CSS}
+    - Junto com HTML e CSS
 - Alto nível, prototypes, sintaxe que lembra Java/C e afins
 - Principais implementações
-    - V8 - Blink (Chrome) e Node
+    - V8 - Blink (Chrome, Edge) e Node
     - JavaScriptCore - Webkit (Safari)
     - Spidermonkey - Gecko (Firefox)
 
@@ -137,7 +141,7 @@ function strlen(ptr) {
     - Não precisa ser parseado, apenas decodado
 - Tipos já determinados
 - VM em pilha
-- Suporte a uma versão MVP nos 4 principais navegadores
+- [Suporte](https://caniuse.com/#feat=wasm) a uma versão MVP nos 4 principais navegadores
 - Gerenciamento manual de memória
 
 ---
@@ -178,7 +182,12 @@ function strlen(ptr) {
 - Não existem (ainda)
    - [ABI em discussão](https://github.com/WebAssembly/tool-conventions/issues/27)
 - Atualmente cada host expõe uma API
-- WASI a caminho
+- [WASI](https://wasi.dev/) a caminho
+    - Arquivos e sistemas de arquivos
+    - Sockets
+    - Relógios
+    - Random
+    - Etc
 
 ---
 
@@ -195,6 +204,7 @@ function strlen(ptr) {
     - Unity
     - Qt
     - DOSBox
+    - **Pyodide**
 
 ---
 
@@ -225,7 +235,7 @@ function strlen(ptr) {
 
 ## emscripten - main loop
 
-- Não pode bloquear
+- [Não pode bloquear](https://flaviocopes.com/javascript-event-loop/)
 - Função de iteração
 - [emscripten_set_main_loop](https://kripken.github.io/emscripten-site/docs/api_reference/emscripten.h.html#c.emscripten_set_main_loop_arg)
 - [emscripten_cancel_main_loop](https://kripken.github.io/emscripten-site/docs/api_reference/emscripten.h.html#c.emscripten_cancel_main_loop)
@@ -243,6 +253,55 @@ function strlen(ptr) {
 ---
 
 <img src="../Monty_python_foot.png" />
+
+---
+
+## Python no frontend
+
+- Transpilers
+- WebAssembly
+
+> TODO Achar mais opções?
+
+---
+
+## Transcrypt
+
+- https://www.transcrypt.org/
+- Transpila Python p/ Javascript
+- Numscrypt
+    - TypedArray
+
+---
+
+## Pyodide
+
+- Port do CPython e stack científica
+- Inspirado no [Iodide](https://alpha.iodide.io/)
+    - Notebook-like project
+- numpy, pandas, matplotlib
+- Experimetal e planos p/ futuro
+    - scipy
+    - scikit-image/learn
+    - Wheels Python "puro sangue" no PyPI
+
+---
+
+## Jupyter tradicional vs Pyodide
+
+- Kernel num servidor vs Kernel dentro do Browser
+
+---
+
+## Pyodide performance
+
+> Colocar gráfico de performance de Roman
+
+---
+
+## Pyodide - Como funciona?
+
+> colocar gráfico de como ele é estruturado
 
 ---
 
@@ -265,12 +324,13 @@ function strlen(ptr) {
     - Formato textual
     - Implementações nos browsers e outros ambientes
 - [Python](https://github.com/iodide-project/pyodide)
+    - Pyodide
 
 ---
 
 ## Amanhã (e depois de amanhã)
 
-- [Roadmap](https://webassembly.org/roadmap/)
+- [Roadmap WASM](https://webassembly.org/roadmap/)
     - Especificação
     - Threads
     - GC
@@ -281,27 +341,26 @@ function strlen(ptr) {
     - Mais controle de memória
     - ABI
     - [Segurança](https://www.fastly.com/blog/hijacking-control-flow-webassembly)
+- [Pyodide]
+    - Extensões FORTRAN (BLAS/LAPACK)
+    - Diminuir tamanho dos downloads
+    - Async/threading
 
 ---
 
 ## Links úteis
 
-- Projeto
-    - https://webassembly.org
-- MUITOS links de projetos, ferramentas, etc
-    - https://github.com/mbasso/awesome-wasm
-- WebAssembly and the Death of Javascript
-    - https://www.youtube.com/watch?v=pBYqen3B2gc 
-- Emscripten
-    - https://kripken.github.io/emscripten-site/index.html
-- Blog da Mozilla
-    - https://hacks.mozilla.org/category/webassembly/
-- Pyodide
-    - https://github.com/iodide-project/pyodide
+- [Página oficial do Webassembly](https://webassembly.org)
+- [Awesome Wasm](https://github.com/mbasso/awesome-wasm) - MUITOS links de projetos, ferramentas, etc
+- [WebAssembly and the Death of Javascripat](https://www.youtube.com/watch?v=pBYqen3B2gc) - JS Monthy London - Março 2018
+- [Emscripten Github](https://kripken.github.io/emscripten-site/index.html)
+- [Blog da Mozilla sobre Wasm](https://hacks.mozilla.org/category/webassembly/)
+- [Pyodide Github](https://github.com/iodide-project/pyodide)
+- [Apresentação sobre Pyodide](https://fosdem.org/2019/schedule/event/python_pyodide/) na FOSDEM 2019
 
 ---
 
-## Perguntas
+## Perguntas ?
 
 ---
 
