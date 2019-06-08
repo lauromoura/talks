@@ -4,6 +4,12 @@ E o que Python tem a ver com isso
 
 ---
 
+## Sumário
+
+<!-- contents -->
+
+---
+
 ## Quem sou
 
 - Desenvolvedor de software desde 2008
@@ -15,11 +21,13 @@ E o que Python tem a ver com isso
     - Webkit
     - EFL (JS, C#)
 - Contato:
-    - Twitter: lauromoura
-    - Github: lauromoura
+    - Twitter: [@lauromoura](https://twitter.com/lauromoura)
+    - Github: [lauromoura](https://github.com/lauromoura)
     - email: lauromoura at gmail.com
 
 ---
+
+<!-- sectionTitle: Javascript (e seus problemas) -->
 
 ## No começo, era o javascript
 
@@ -80,6 +88,8 @@ o=n.slice,a=n.concat,s=n.push,u=n.indexOf,l={},
 
 ---
 
+<!-- sectionTitle: Assembly na Web -->
+
 ## "Assembly" na Web
 
 ---
@@ -131,7 +141,22 @@ function strlen(ptr) {
 
 ---
 
+<!-- sectionTitle: Webassembly -->
+
 ## WebAssembly
+
+Assembly de verdade na web
+
+---
+
+## WebAssembly
+
+"Se WASM+WASI existissem em 2008, nós não precisaríamos
+ter criado o Docker. Essa é a importância deles. Webassembly
+no servidor é o futuro da computação. Uma interface de sistemas
+padrão era o elo que faltava. Vamos torcer que WASI esteja a altura"
+
+[Solomon Hykes](https://twitter.com/solomonstre/status/1111004913222324225?lang=en) - Criador do Docker
 
 ---
 
@@ -191,7 +216,11 @@ function strlen(ptr) {
 
 ---
 
+<!-- sectionTitle: emscripten - Uma ponte entre JS e Wasm -->
+
 ## emscripten
+
+Uma ponte entre JS e C/C++
 
 ---
 
@@ -202,6 +231,7 @@ function strlen(ptr) {
 - Gera código asm.js ou WebAssembly
 - Usos
     - Unity
+    - [Unreal](http://s3.amazonaws.com/mozilla-games/tmp/2017-02-21-SunTemple/SunTemple.html)
     - Qt
     - DOSBox
     - **Pyodide**
@@ -240,6 +270,7 @@ function strlen(ptr) {
 - [emscripten_set_main_loop](https://kripken.github.io/emscripten-site/docs/api_reference/emscripten.h.html#c.emscripten_set_main_loop_arg)
 - [emscripten_cancel_main_loop](https://kripken.github.io/emscripten-site/docs/api_reference/emscripten.h.html#c.emscripten_cancel_main_loop)
 
+<!--
 ---
 
 ## emscripten - linkagem e memória
@@ -249,30 +280,46 @@ function strlen(ptr) {
     - Módulos JS dinamicamente
 - [Problemas com acessos desalinhados](https://kripken.github.io/emscripten-site/docs/porting/Debugging.html#memory-alignment-issues)
     - SAFE_HEAP para diagnóstico
-
+-->
 ---
+
+<!-- sectionTitle: Python no browser -->
 
 <img src="../Monty_python_foot.png" />
 
 ---
 
-## Python no frontend
+## Python no frontend - Transpilers
 
-- Transpilers
-- WebAssembly
+- Exemplo: Transcrypt (thanks, Berin)
+- Compilam .py (ou parecido) para .js
+- Pros:
+    - Mais fácil integrar com libs JS
+    - Resultado da compilação de tamanho aceitável
+    - Execução relativamente rápida (comparado a JS)
+- Cons:
+    - Complicado utilizar extensões Python nativas
+    - Nem sempre toda sintaxe de Python é suportada
+    - Compatibilidade entre tipos JS e Python em todo código
 
-> TODO Achar mais opções?
+---
+
+## Python no frontend - Webasm
+
+- Exemplo: Pyodide
+- Compilam um runtime em Webasm
+- Pros:
+    - Extensões nativas podem funcionar mais facilmente
+    - Usar o próprio CPython
+    - Compatibilidade entre tipos JS e Python apenas na API
+- Cons:
+    - Tamanho: .wasm ainda estão bem grandes (MB's)
+        - Mas podem ser cacheados pelo browser
+    - Pode ser lento demais para alguns casos
 
 ---
 
-## Transcrypt
-
-- https://www.transcrypt.org/
-- Transpila Python p/ Javascript
-- Numscrypt
-    - TypedArray
-
----
+<!-- sectionTitle: Pyodide -->
 
 ## Pyodide
 
@@ -280,34 +327,31 @@ function strlen(ptr) {
 - Inspirado no [Iodide](https://alpha.iodide.io/)
     - Notebook-like project
 - numpy, pandas, matplotlib
-- Experimetal e planos p/ futuro
+- Experimental e planos p/ futuro
     - scipy
     - scikit-image/learn
     - Wheels Python "puro sangue" no PyPI
+- [Tour](https://alpha.iodide.io/notebooks/300/)
 
 ---
 
-## Jupyter tradicional vs Pyodide
+## Pyodide com Javascript
 
-- Kernel num servidor vs Kernel dentro do Browser
+```javascript
+languagePluginLoader.then(() => {
+    result = pyodide.runPython('import sys\nsys.version');
+    console.log(result);
+});
 
----
-
-## Pyodide performance
-
-> Colocar gráfico de performance de Roman
-
----
-
-## Pyodide - Como funciona?
-
-> colocar gráfico de como ele é estruturado
+```
 
 ---
 
 ## Demos
 
 ---
+
+<!-- sectionTitle: Hoje e amanhã -->
 
 ## Hoje e Amanhã
 
@@ -325,6 +369,7 @@ function strlen(ptr) {
     - Implementações nos browsers e outros ambientes
 - [Python](https://github.com/iodide-project/pyodide)
     - Pyodide
+- [Outras linguagens](https://github.com/mbasso/awesome-wasm/blob/master/README.md#languages)
 
 ---
 
@@ -341,20 +386,30 @@ function strlen(ptr) {
     - Mais controle de memória
     - ABI
     - [Segurança](https://www.fastly.com/blog/hijacking-control-flow-webassembly)
-- [Pyodide]
+
+---
+
+## Amanhã (e depois de amanhã)
+
+- Pyodide
     - Extensões FORTRAN (BLAS/LAPACK)
     - Diminuir tamanho dos downloads
     - Async/threading
+    - PyGame? (emscripten já suporta SDL muito bem...)
 
 ---
+
+<!-- sectionTitle: Referências -->
 
 ## Links úteis
 
 - [Página oficial do Webassembly](https://webassembly.org)
+- [Wasm Explorer](https://mbebenita.github.io/WasmExplorer/)
 - [Awesome Wasm](https://github.com/mbasso/awesome-wasm) - MUITOS links de projetos, ferramentas, etc
 - [WebAssembly and the Death of Javascripat](https://www.youtube.com/watch?v=pBYqen3B2gc) - JS Monthy London - Março 2018
 - [Emscripten Github](https://kripken.github.io/emscripten-site/index.html)
-- [Blog da Mozilla sobre Wasm](https://hacks.mozilla.org/category/webassembly/)
+- [Post no blog da Mozilla sobre Wasm](https://hacks.mozilla.org/category/webassembly/)
+- [Post no blog da Mozilla sobre Pyodide](https://hacks.mozilla.org/2019/04/pyodide-bringing-the-scientific-python-stack-to-the-browser/)
 - [Pyodide Github](https://github.com/iodide-project/pyodide)
 - [Apresentação sobre Pyodide](https://fosdem.org/2019/schedule/event/python_pyodide/) na FOSDEM 2019
 

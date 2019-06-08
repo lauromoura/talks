@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="pyodide.js"></script>
+</head>
+<body>
+    <script>
+        languagePluginLoader.then(() => {
+            console.log("Loaded Pyodide.");
+            result = pyodide.runPython('import sys\nsys.version');
+            console.log(`Running python version is ${result}`);
+        });
+    </script>
+</body>
+</html>
